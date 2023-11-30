@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>
+            FashionFusion
+        </title>
+    </head>
+    <body class="bg-black">
+        <div class="h-12 bg-white flex justify-center gap-4">
+            <div  class="px-3 py-3 text-gray-600 font-sans subpixel-antialiased text-xl font-semibold"><a  href="/home">Home</a></div>
+            <div class="px-8 py-3 text-gray-600 font-sans subpixel-antialiased text-xl font-semibold"><a href="/home/fashion_recommend">Fashion Recommender</a></div>
+            <div class="px-8 py-3 text-gray-600 font-sans subpixel-antialiased text-xl font-semibold"><a   href="/home/prs">Personalized Recommender</a></div>
+            
+          </div>
+        
+        <main>
+        <form  runat="server" class="bg-white h-100 w-80 mx-auto mt-10 rounded-lg" action="/prs_result" method="post"  enctype="multipart/form-data">
+            <br>
+            <label class="mx-12 text-2xl font-bold"  for="">Upload your Image</label>
+            <input class="mx-5 mt-3"accept="image/*" type='file' id="imgInp" name="Image" />
+            <img class="mx-5 mt-3"id="blah" src="#" alt="your image" height="144" width="270" />
+            <input class="mt-5 mb-5 mx-28 rounded-full bg-blue-400 h-10 w-28 "type="submit" value="Recommend">
+        </form>        
+            <div class="grid grid-cols-5 mt-8 mx-16">
+                <div>
+                    <img class="h-60 w-60"src="{{s0}}">
+                </div>
+
+                <div>
+                    <img class="h-60 w-60"src="{{s1}} ">
+                </div>
+
+                <div>
+                    <img class="h-60 w-60"src="{{s2}}">
+                </div>
+
+                <div>
+                    <img class="h-60 w-60"src={{s3}}>
+                </div>
+
+                <div>
+                    <img class="h-60 w-60"src="{{s4}}">
+                </div>                               
+            </div>
+       
+    </main>
+    <script> 
+     imgInp.onchange = evt => {
+  const [file] = imgInp.files
+  if (file) {
+    blah.src = URL.createObjectURL(file)
+  }
+} 
+    </script> 
+
+
+    </body>
+</html>

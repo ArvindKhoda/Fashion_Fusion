@@ -1,0 +1,39 @@
+<html>
+    <head>
+      <link href='https://unpkg.com/css.gg@2.0.0/icons/css/profile.css' rel='stylesheet'>
+      <link href='https://unpkg.com/css.gg@2.0.0/icons/css/shopping-bag.css' rel='stylesheet'> 
+      <link href='https://unpkg.com/css.gg@2.0.0/icons/css/heart.css' rel='stylesheet'>
+      <link href='https://unpkg.com/css.gg@2.0.0/icons/css/search.css' rel='stylesheet'>
+      <script src="https://cdn.tailwindcss.com"></script>
+  <title>Personalized Recommender</title>      
+    </head>
+    <body class="bg-black">
+      <div class="h-12 bg-white flex justify-center gap-4">
+        <div  class="px-3 py-3 text-gray-600 font-sans subpixel-antialiased text-xl font-semibold"><a  href="/home">Home</a></div>
+        <div class="px-8 py-3 text-gray-600 font-sans subpixel-antialiased text-xl font-semibold"><a href="/home/fashion_recommend">Fashion Recommender</a></div>
+        <div class="px-3 py-3 text-gray-600 font-sans subpixel-antialiased text-xl font-semibold"> <a href="">Fashion Classifier</a></div>
+        
+      </div>
+
+        <h1 class=" mt-10 text-center text-white text-6xl font-bold">Personlized Recommender</h1>
+        <div class="flex justify-center">
+              <div class="mt-20" > 
+                  <h1 class="text-white text-2xl my-5 ml-8 font-semibold">My Fashion DB</h1>
+                  <form action="/prs_submit" method="post" enctype="multipart/form-data">
+                    <img class="h-56 w-56" src="https://cdn-icons-png.flaticon.com/512/657/657695.png" alt="">
+                    <input class="my-5 pl-14 " type="file" name="files" id="imageUpload" multiple accept="image/*">
+                    <br>
+                    <input class="mt-1 ml-14 bg-orange-400 rounded-full h-10 w-28" type="submit" value="Upload">
+                  </form>
+               </div>
+
+               <div class="h-56 w-56 mt-20">
+                <h1 class="text-white text-2xl my-5 ml-8 font-semibold">Recommender</h1>
+                <img src="{{rec}}" alt="">
+                <a href='/prs_result_rec'><h1 class="mt-5 ml-14 py-2 px-2 bg-yellow-300 rounded-full h-10 w-28">Recommend</h1></a>
+              </div>
+        </div>
+    </body>
+</html>
+
+
