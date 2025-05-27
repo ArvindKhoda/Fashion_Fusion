@@ -77,7 +77,7 @@ def reg():
         'Email': request.form.get('Email'),
         'Password': request.form.get("Password")
     }
-     user.insert_one(data)
+    user.insert_one(data)
     return render_template('register.html', r0="Your Registration is Done")
 
 
