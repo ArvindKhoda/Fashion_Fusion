@@ -5,11 +5,10 @@ dnspython==2.3.0
 tqdm==4.65.0
 pinecone-client==2.2.2
 waitress==2.1.2
-tensorflow==2.13.0
 keras==2.13.1
 keras-preprocessing==1.1.2
-numpy==1.26.4
 pandas==2.0.3
 Pillow==10.0.0
 tqdm==4.65.0
+tensorflow==2.13.0
 pinecone-client==2.2.2
