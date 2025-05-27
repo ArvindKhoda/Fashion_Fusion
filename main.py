@@ -14,7 +14,7 @@ from PIL import Image
 from tqdm import tqdm
 from flask import (
     Flask, render_template, request, url_for, send_file,
-    Response, session, abort
+    Response, session, abort,redirect
 )
 from bson import ObjectId, Binary
 from bson.errors import InvalidId
@@ -43,6 +43,12 @@ app.secret_key = "jigysa"
 def login():
     return render_template('login.html')
 
+@app.route('/home')
+def home():
+    if 'user_id' in session:
+        return render_template('home.html', im=url_for('static', filename="home_image.png"))
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/cred', methods=['POST'])
 def cred():
