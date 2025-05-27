@@ -77,17 +77,8 @@ def reg():
         'Email': request.form.get('Email'),
         'Password': request.form.get("Password")
     }
-    user.insert(data)
+     user.insert_one(data)
     return render_template('register.html', r0="Your Registration is Done")
-
-
-# ============================
-# HOME ROUTES
-# ============================
-
-@app.route('/home')
-def home():
-    return render_template('home.html')
 
 
 # ============================
