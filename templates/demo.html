@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fashion Fusion – Smart Fashion & Deals</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navigation -->
+  <nav class="bg-white shadow sticky top-0 z-50 py-4 px-8 flex justify-between items-center">
+    <div class="flex items-center space-x-6 font-bold text-lg">
+      <img src="https://img.icons8.com/ios-filled/50/shirt.png" alt="Logo" class="h-8">
+      <a href="#" class="text-blue-600 hover:underline">Home</a>
+      <a href="#recommendations" class="hover:text-blue-600">Recommendations</a>
+      <a href="#deals" class="hover:text-blue-600">Best Deals</a>
+      <a href="#categories" class="hover:text-blue-600">Categories</a>
+    </div>
+    <input type="text" placeholder="Search..." class="px-4 py-2 w-64 bg-gray-100 border rounded-lg">
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative w-full h-[32rem] bg-cover bg-center text-white text-center" style="background-image: url('https://images.unsplash.com/photo-1542060748-10c28b62716d')">
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center px-4">
+      <h1 class="text-5xl font-extrabold">Discover Your Style</h1>
+      <p class="mt-4 text-xl max-w-2xl">AI-powered fashion recommendations and the best online fashion deals in one place.</p>
+      <a href="#recommendations" class="mt-6 px-6 py-3 bg-blue-600 rounded-full hover:bg-blue-700 transition">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Recommendations -->
+  <section id="recommendations" class="mt-20 max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-6">🧠 Smart Fashion Recommendations</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {% for item in fashion_items %}
+      <div class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition">
+        <a href="{{ item.link }}" target="_blank">
+          <img src="{{ item.image }}" alt="{{ item.title }}" class="rounded-md w-full h-[300px] object-cover">
+        </a>
+        <h3 class="mt-2 font-semibold text-base">{{ item.title }}</h3>
+        <p class="text-blue-600 font-medium">{{ item.price }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Deals -->
+  <section id="deals" class="mt-20 max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-6">🔥 Today's Top Fashion Deals</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
+        <img src="https://assets.myntassets.com/w_400,q_90/assets/images/2022/9/30/offer-banner.jpg" alt="Myntra Deal" class="rounded-md">
+        <p class="mt-2 text-sm text-gray-600">Flat 50% Off at Myntra</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
+        <img src="https://assets.tatacliq.com/medias/sys_master/images/fashion-sale-banner.jpg" alt="Tata CLiQ" class="rounded-md">
+        <p class="mt-2 text-sm text-gray-600">Up to 60% Off on Tata CLiQ</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section id="categories" class="mt-24 max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-6">🛍️ Explore by Category</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      <div class="bg-white text-center p-4 shadow rounded-lg hover:scale-105 transition">
+        <img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd47" class="rounded-md">
+        <p class="mt-2 font-medium">Dresses</p>
+      </div>
+      <div class="bg-white text-center p-4 shadow rounded-lg hover:scale-105 transition">
+        <img src="https://images.unsplash.com/photo-1562577309-2592ab84b1bc" class="rounded-md">
+        <p class="mt-2 font-medium">Shoes</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="mt-24 bg-blue-100 py-12 text-center">
+    <h2 class="text-3xl font-bold mb-4">📩 Subscribe for Style Tips</h2>
+    <p class="text-gray-700 mb-6">Get fashion trends and exclusive deals in your inbox weekly.</p>
+    <form class="flex flex-col md:flex-row justify-center gap-4 max-w-xl mx-auto">
+      <input type="email" placeholder="Enter your email" class="px-5 py-3 rounded-lg border w-full md:w-auto">
+      <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white mt-20 border-t py-10 px-6 text-sm text-gray-600">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6">
+      <div>
+        <h4 class="font-semibold mb-2">About</h4>
+        <ul>
+          <li>Company</li>
+          <li>Team</li>
+          <li>Careers</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Help</h4>
+        <ul>
+          <li>Support</li>
+          <li>Returns</li>
+          <li>FAQs</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Legal</h4>
+        <ul>
+          <li>Terms</li>
+          <li>Privacy</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Social</h4>
+        <ul>
+          <li>Instagram</li>
+          <li>Twitter</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fashion Fusion - All-In-One Fashion Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+<!-- Navigation -->
+<nav class="bg-white shadow-md sticky top-0 z-50 py-4 px-8 flex justify-center items-center">
+  <div class="flex items-center space-x-12 font-semibold text-xl">
+    <a href="/" class="text-blue-700 hover:text-blue-900 transition-colors duration-300">Home</a>
+    <a href="/home/fashion_recommend" class="text-gray-700 hover:text-blue-700 transition-colors duration-300">Fashion Recommender</a>
+    <a href="/home/prs_fashion_recommend" class="text-gray-700 hover:text-blue-700 transition-colors duration-300">Virtual Wardrobe</a>
+  </div>
+</nav>
+
+
+<!-- Hero Banner -->
+<section class="w-full h-96 relative bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-400">
+  <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-white text-center px-4">
+    <h1 class="text-6xl font-extrabold bg-gradient-to-r from-teal-200 via-pink-400 to-yellow-300 bg-clip-text text-transparent drop-shadow-xl">
+      Welcome to Fashion Fusion
+    </h1>
+    <p class="mt-6 text-xl text-white max-w-2xl leading-relaxed drop-shadow-md">
+      Discover top fashion trends, deals, and get AI-powered outfit suggestions — all from one place.
+    </p>
+    <a href="/home/prs_fashion_recommend" class="mt-8 px-8 py-3 bg-white text-black rounded-full font-semibold text-lg hover:bg-gray-200 transition-all duration-300">
+      Explore Now
+    </a>
+  </div>
+</section>
+
+<!-- Offer Slider -->
+<section class="relative mt-8 max-w-6xl mx-auto overflow-hidden rounded-xl shadow-lg group">
+  <div id="slider" class="relative w-full h-72 md:h-80 lg:h-96">
+    <!-- Slides -->
+    <a href="https://www.myntra.com" target="_blank" class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out cursor-pointer rounded-xl shadow-lg">
+      <img src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2024/9/30/305ab617-b86d-436d-8546-1299360c73b91727680300162-Fwd-Desktop-Banners-----18.jpg" alt="Myntra Sale" class="w-full h-full object-cover rounded-xl hover:scale-105 transition-transform duration-500">
+    </a>
+    <a href="https://www.tatacliq.com" target="_blank" class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 cursor-pointer rounded-xl shadow-lg">
+      <img src="https://assets.tatacliq.com/medias/sys_master/images/65236471808030.png" alt="Tata CLiQ Offers" class="w-full h-full object-cover rounded-xl hover:scale-105 transition-transform duration-500">
+    </a>
+    <a href="https://www.shoppersstop.com/" target="_blank" class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 cursor-pointer rounded-xl shadow-lg">
+      <img src="https://cmsimages.shoppersstop.com/watches_main_banner_web_90e56bae42/watches_main_banner_web_90e56bae42.png" alt="AJIO Sale" class="w-full h-full object-cover rounded-xl hover:scale-105 transition-transform duration-500">
+    </a>
+    <a href="https://www.amazon.in" target="_blank" class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 cursor-pointer rounded-xl shadow-lg">
+      <img src="https://m.media-amazon.com/images/G/31/img2020/fashion/WomensApparel2024/AmazonKarigar_1500x460._CB796150745_.jpg" alt="Amazon Fashion" class="w-full h-full object-cover rounded-xl hover:scale-105 transition-transform duration-500">
+    </a>
+    <a href="https://www.limeroad.com/" target="_blank" class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 cursor-pointer rounded-xl shadow-lg">
+      <img src="https://n-img1.junaroad.com/assets/images/mobileNotif/img-1746538071834.jpg?crsl_pos=4" alt="Limeroad Deals" class="w-full h-full object-cover rounded-xl hover:scale-105 transition-transform duration-500">
+    </a>
+    <a href="https://www.nykaa.com" target="_blank" class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 cursor-pointer rounded-xl shadow-lg">
+      <img src="https://images-static.nykaa.com/uploads/97f30d35-0fb5-4ff8-93b6-939ae4bb6d56.jpg?tr=cm-pad_resize,w-900" alt="Nykaa Beauty Offers" class="w-full h-full object-cover rounded-xl hover:scale-105 transition-transform duration-500">
+    </a>
+  </div>
+
+  <!-- Manual Navigation Buttons -->
+  <button id="prev" aria-label="Previous Slide" class="absolute top-1/2 left-6 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-90 text-black rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition duration-300 z-20 text-4xl select-none">
+    ‹
+  </button>
+  <button id="next" aria-label="Next Slide" class="absolute top-1/2 right-6 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-90 text-black rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition duration-300 z-20 text-4xl select-none">
+    ›
+  </button>
+
+  <!-- Slide Indicators -->
+  <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4 z-20">
+    <button class="indicator w-6 h-1 bg-blue-600 rounded-full transition-opacity duration-300" aria-label="Slide 1"></button>
+    <button class="indicator w-6 h-1 bg-blue-600 bg-opacity-50 rounded-full transition-opacity duration-300" aria-label="Slide 2"></button>
+    <button class="indicator w-6 h-1 bg-blue-600 bg-opacity-50 rounded-full transition-opacity duration-300" aria-label="Slide 3"></button>
+    <button class="indicator w-6 h-1 bg-blue-600 bg-opacity-50 rounded-full transition-opacity duration-300" aria-label="Slide 4"></button>
+    <button class="indicator w-6 h-1 bg-blue-600 bg-opacity-50 rounded-full transition-opacity duration-300" aria-label="Slide 5"></button>
+    <button class="indicator w-6 h-1 bg-blue-600 bg-opacity-50 rounded-full transition-opacity duration-300" aria-label="Slide 6"></button>
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const indicators = document.querySelectorAll('.indicator');
+  let index = 0;
+  let interval = null;
+
+  function showSlide(i) {
+    slides.forEach((slide, idx) => {
+      slide.classList.toggle('opacity-0', idx !== i);
+      indicators[idx].classList.toggle('bg-opacity-50', idx !== i);
+      indicators[idx].classList.toggle('bg-opacity-100', idx === i);
+    });
+    index = i;
+  }
+
+  function startSlider() {
+    interval = setInterval(() => {
+      let next = (index + 1) % slides.length;
+      showSlide(next);
+    }, 3500);
+  }
+
+  function stopSlider() {
+    clearInterval(interval);
+  }
+
+  document.querySelector('#prev').addEventListener('click', () => {
+    stopSlider();
+    let prev = (index - 1 + slides.length) % slides.length;
+    showSlide(prev);
+    startSlider();
+  });
+
+  document.querySelector('#next').addEventListener('click', () => {
+    stopSlider();
+    let next = (index + 1) % slides.length;
+    showSlide(next);
+    startSlider();
+  });
+
+  indicators.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      stopSlider();
+      showSlide(i);
+      startSlider();
+    });
+  });
+
+  document.querySelector('#slider').addEventListener('mouseover', stopSlider);
+  document.querySelector('#slider').addEventListener('mouseout', startSlider);
+
+  showSlide(index);
+  startSlider();
+</script>
+
+
+
+=<!-- Recommender Sections -->
+<section class="mt-20 max-w-7xl mx-auto px-6">
+  <h2 class="text-3xl font-bold text-center mb-10 bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
+    🌟✨ Fashion Fusion Styles ✨🌟
+  </h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    
+    <!-- Fashion Recommender -->
+    <div class="rounded-2xl p-6 shadow-xl bg-gradient-to-tr from-blue-50 via-white to-blue-100 hover:shadow-2xl transition-shadow duration-300">
+      <h3 class="text-2xl font-semibold text-blue-800 mb-3">👗 Fashion Recommender</h3>
+      <p class="text-gray-700 mb-5">Upload an image and find similar styles curated from leading fashion sites.</p>
+      <a href="/home/fashion_recommend" class="inline-block px-6 py-2 rounded-full text-white font-medium bg-blue-600 hover:bg-blue-700 transition duration-200">
+        Try It Now
+      </a>
+    </div>
+    
+    <!-- Virtual Wardrobe -->
+    <div class="rounded-2xl p-6 shadow-xl bg-gradient-to-tr from-green-50 via-white to-green-100 hover:shadow-2xl transition-shadow duration-300">
+      <h3 class="text-2xl font-semibold text-green-800 mb-3">🧥 Your Virtual Wardrobe</h3>
+      <p class="text-gray-700 mb-5">Upload your own outfits and let AI suggest combinations or shopping matches.</p>
+      <a href="/home/prs_fashion_recommend" class="inline-block px-6 py-2 rounded-full text-white font-medium bg-green-600 hover:bg-green-700 transition duration-200">
+        Organize Wardrobe
+      </a>
+    </div>
+    
+  </div>
+</section>
+
+
+  <!-- Newsletter -->
+<section class="mt-24 bg-gradient-to-r from-blue-200 to-blue-100 py-12 text-center rounded-xl max-w-3xl mx-auto px-6 shadow-md">
+  <h2 class="text-3xl font-extrabold mb-3 text-blue-900">📩 Stay in the Loop</h2>
+  <p class="text-blue-800 mb-6 text-lg">Subscribe to get fashion trends, discounts & style tips delivered weekly.</p>
+  <form class="flex flex-col md:flex-row justify-center gap-4 max-w-xl mx-auto">
+    <input 
+      type="email" 
+      placeholder="Your email address" 
+      required
+      class="px-5 py-3 rounded-full bg-white border border-blue-300 focus:outline-none focus:ring-4 focus:ring-blue-400 focus:border-blue-500 w-full md:w-auto text-lg transition"
+    >
+    <button 
+      type="submit"
+      class="px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 shadow-lg hover:shadow-xl transition duration-300 text-lg font-semibold"
+    >
+      Subscribe
+    </button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-50 mt-16 border-t border-gray-200 py-12 px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-sm text-gray-700">
+    <div>
+      <h4 class="font-semibold mb-4 text-gray-900 text-lg">About</h4>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-blue-600 transition-colors">Our Story</a></li>
+        <li><a href="#" class="hover:text-blue-600 transition-colors">Careers</a></li>
+        <li><a href="#" class="hover:text-blue-600 transition-colors">Media</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-4 text-gray-900 text-lg">Support</h4>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-blue-600 transition-colors">Help Center</a></li>
+        <li><a href="#" class="hover:text-blue-600 transition-colors">Returns</a></li>
+        <li><a href="#" class="hover:text-blue-600 transition-colors">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-4 text-gray-900 text-lg">Explore</h4>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-blue-600 transition-colors">Trends</a></li>
+        <li><a href="#" class="hover:text-blue-600 transition-colors">Deals</a></li>
+        <li><a href="#" class="hover:text-blue-600 transition-colors">Blogs</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-4 text-gray-900 text-lg">Connect</h4>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-blue-600 transition-colors">Instagram</a></li>
+        <li><a href="#" class="hover:text-blue-600 transition-colors">Twitter</a></li>
+        <li><a href="#" class="hover:text-blue-600 transition-colors">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-10 text-center text-xs text-gray-400">
+    &copy; 2025 Your Company. All rights reserved.
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personalized Recommender</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .dropzone {
+      transition: all 0.3s ease-in-out;
+    }
+    .dropzone.dragover {
+      border-color: #3b82f6;
+      background-color: #eff6ff;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navigation -->
+  <nav class="bg-white shadow-md py-3 px-6 flex justify-center space-x-10 font-semibold text-lg">
+    <a href="/home" class="hover:text-blue-500">Home</a>
+    <a href="/home/fashion_recommend" class="hover:text-blue-500">Fashion Recommender</a>
+    <a href="/home/prs" class="text-blue-600 hover:text-blue-500">Virtual Wardrobe</a>
+  </nav>
+
+  <!-- Header -->
+  <header class="text-center mt-12 mb-6">
+    <h1 class="text-4xl font-bold">🧥 Virtual Wardrobe</h1>
+    <p class="text-gray-600 mt-2 text-lg">Upload your fashion pieces & get smart outfit suggestions</p>
+  </header>
+
+  <!-- Main Section -->
+  <main class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
+
+    <!-- Upload Clothing Section -->
+    <section class="bg-white p-6 rounded-xl shadow-md">
+      <h2 class="text-2xl font-semibold mb-4">📸 Upload Your Clothing</h2>
+      <form action="/prs_submit" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <div id="uploadDropzone" class="dropzone flex flex-col items-center justify-center border-2 border-dashed border-gray-300 p-10 rounded-lg text-center bg-gray-50 hover:bg-gray-100 cursor-pointer">
+          <p class="text-lg">Drag & drop your clothing image here</p>
+          <p class="text-sm text-gray-500 mt-1">or click to select</p>
+          <input type="file" name="files" id="imageUpload" multiple accept="image/*" class="hidden">
+        </div>
+
+        <div class="flex justify-center">
+          <img id="uploadPreview" src="#" alt="Clothing Preview" class="hidden mt-4 h-48 rounded-lg shadow-md" />
+        </div>
+
+        <div class="text-center">
+          <input type="submit" value="Upload" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full transition">
+        </div>
+      </form>
+    </section>
+
+    <!-- Recommender Section -->
+    <section class="bg-white p-6 rounded-xl shadow-md">
+      <h2 class="text-2xl font-semibold mb-4 text-center">✨ Recommended Look</h2>
+      <form action="/prs_result" method="POST" enctype="multipart/form-data" class="space-y-6 text-center">
+        <div id="recDropzone" class="dropzone flex flex-col items-center justify-center border-2 border-dashed border-gray-300 p-10 rounded-lg text-center bg-gray-50 hover:bg-gray-100 cursor-pointer">
+          <p class="text-lg">Drag & drop an image for recommendation</p>
+          <p class="text-sm text-gray-500 mt-1">or click to select</p>
+          <input type="file" name="UploadImage" id="UploadImage" accept="image/*" class="hidden" required>
+        </div>
+
+        <div class="flex justify-center">
+          <img id="recPreview" src="#" alt="Recommendation Preview" class="hidden mt-4 h-48 rounded-lg shadow-md" />
+        </div>
+
+        <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-6 py-2 rounded-full transition">
+          Recommend
+        </button>
+      </form>
+    </section>
+
+  </main>
+
+<!-- Wardrobe Display -->
+<section class="max-w-6xl mx-auto mt-16 px-4">
+  <h2 class="text-2xl font-semibold mb-6 text-center">👗 Your Wardrobe</h2>
+
+  {% if wardrobe_images %}
+<section class="max-w-7xl mx-auto p-6 bg-white rounded-xl shadow-md">
+
+    <div class="grid gap-6"
+         style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+      {% for image_url in wardrobe_images %}
+        <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+          <img src="{{ image_url }}"
+               alt="Clothing item"
+               class="rounded-lg object-contain w-full max-h-80"
+               loading="lazy">
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-center text-gray-500 mt-4">
+      No wardrobe images found. Upload some to get started!
+    </p>
+  {% endif %}
+</section>
+
+
+
+
+  <!-- JavaScript for Upload Section -->
+  <script>
+    const uploadDropzone = document.getElementById('uploadDropzone');
+    const imageUpload = document.getElementById('imageUpload');
+    const uploadPreview = document.getElementById('uploadPreview');
+
+    uploadDropzone.addEventListener('click', () => imageUpload.click());
+    uploadDropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadDropzone.classList.add('dragover');
+    });
+    uploadDropzone.addEventListener('dragleave', () => uploadDropzone.classList.remove('dragover'));
+    uploadDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadDropzone.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith("image/")) {
+        imageUpload.files = e.dataTransfer.files;
+        uploadPreview.src = URL.createObjectURL(file);
+        uploadPreview.classList.remove('hidden');
+      }
+    });
+
+    imageUpload.onchange = () => {
+      const file = imageUpload.files[0];
+      if (file && file.type.startsWith("image/")) {
+        uploadPreview.src = URL.createObjectURL(file);
+        uploadPreview.classList.remove('hidden');
+      }
+    };
+  </script>
+
+  <!-- JavaScript for Recommender Section -->
+  <script>
+    const recDropzone = document.getElementById('recDropzone');
+    const recInput = document.getElementById('UploadImage');
+    const recPreview = document.getElementById('recPreview');
+
+    recDropzone.addEventListener('click', () => recInput.click());
+
+    recInput.addEventListener('change', function () {
+      if (recInput.files && recInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          recPreview.src = e.target.result;
+          recPreview.classList.remove("hidden");
+        };
+        reader.readAsDataURL(recInput.files[0]);
+      }
+    });
+
+    recDropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      recDropzone.classList.add('dragover');
+    });
+
+    recDropzone.addEventListener('dragleave', () => {
+      recDropzone.classList.remove('dragover');
+    });
+
+    recDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      recDropzone.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        recInput.files = files;
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          recPreview.src = e.target.result;
+          recPreview.classList.remove("hidden");
+        };
+        reader.readAsDataURL(files[0]);
+      }
+    });
+  </script>
+
+</body>
+</html>

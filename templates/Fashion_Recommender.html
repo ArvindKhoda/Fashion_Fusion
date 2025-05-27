@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FashionFusion - Personalized Recommender</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .dropzone {
+      transition: all 0.3s ease-in-out;
+    }
+    .dropzone.dragover {
+      border-color: #3b82f6;
+      background-color: #eff6ff;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navigation -->
+  <nav class="bg-white shadow-md py-3 px-6 flex justify-center space-x-10 font-semibold text-lg">
+    <a href="/home" class="hover:text-blue-500">Home</a>
+    <a href="/home/fashion_recommend" class="hover:text-blue-500  text-blue-600">Fashion Recommender</a>
+    <a href="/home/prs_fashion_recommend" class="hover:text-blue-500">Virtual Wardrobe</a>
+  </nav>
+
+  <!-- Main Section -->
+  <main class="max-w-5xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-md">
+    <h1 class="text-3xl font-bold text-center mb-6">Upload Your Image</h1>
+
+    <!-- Upload Form -->
+    <form action="/home/fashion_recommend/result" method="POST" enctype="multipart/form-data" class="space-y-6">
+
+      <!-- Dropzone -->
+      <div id="dropzone" class="dropzone flex flex-col items-center justify-center border-2 border-dashed border-gray-300 p-10 rounded-lg text-center bg-gray-50 hover:bg-gray-100 cursor-pointer">
+        <p class="text-lg">Drag & drop your image here</p>
+        <p class="text-sm text-gray-500 mt-1">or click to select</p>
+        <input type="file" accept="image/*" name="Image" id="imgInp" class="hidden" required>
+      </div>
+
+      <!-- Image Preview -->
+      <div class="flex justify-center">
+        <img id="preview" src="#" alt="Your Image" class="hidden mt-4 h-48 rounded-lg shadow-md" />
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button type="submit" class="px-8 py-3 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition">Get Recommendations</button>
+      </div>
+    </form>
+  </main>
+
+<!-- Recommendations Section -->
+<section class="mt-12 max-w-5xl mx-auto">
+  <!-- Uploaded Image -->
+  <div class="bg-white rounded-lg shadow-lg p-6 mb-12">
+    <h2 class="text-2xl font-semibold text-center mb-4">Uploaded Image</h2>
+    <div class="flex justify-center">
+      <img src="{{'/file'~image_url}}" alt="Uploaded Image" class="max-h-96 rounded-lg shadow-md">
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="border-t border-gray-300 mb-10"></div>
+
+  <!-- Recommendations Heading -->
+  <h2 class="text-2xl font-semibold mb-6 text-center">Style Recommendations</h2>
+
+  <!-- Recommendations Grid -->
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+    <!-- Recommendation 1 -->
+    <div class="text-center">
+      <img src="{{s0}}" alt="Recommendation 1" class="rounded-lg shadow-md hover:scale-105 transition mx-auto">
+      <a href="{{h0}}" target="_blank" class="mt-2 inline-block bg-blue-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-700 transition">Buy Now</a>
+    </div>
+
+    <!-- Recommendation 2 -->
+    <div class="text-center">
+      <img src="{{s1}}" alt="Recommendation 2" class="rounded-lg shadow-md hover:scale-105 transition mx-auto">
+      <a href="{{h1}}" target="_blank" class="mt-2 inline-block bg-blue-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-700 transition">Buy Now</a>
+    </div>
+
+    <!-- Recommendation 3 -->
+    <div class="text-center">
+      <img src="{{s2}}" alt="Recommendation 3" class="rounded-lg shadow-md hover:scale-105 transition mx-auto">
+      <a href="{{h2}}" target="_blank" class="mt-2 inline-block bg-blue-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-700 transition">Buy Now</a>
+    </div>
+
+    <!-- Recommendation 4 -->
+    <div class="text-center">
+      <img src="{{s3}}" alt="Recommendation 4" class="rounded-lg shadow-md hover:scale-105 transition mx-auto">
+      <a href="{{h3}}" target="_blank" class="mt-2 inline-block bg-blue-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-700 transition">Buy Now</a>
+    </div>
+
+    <!-- Recommendation 5 -->
+    <div class="text-center">
+      <img src="{{s4}}" alt="Recommendation 5" class="rounded-lg shadow-md hover:scale-105 transition mx-auto">
+      <a href="{{h4}}" target="_blank" class="mt-2 inline-block bg-blue-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-700 transition">Buy Now</a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- JavaScript: Drag & Drop & Preview -->
+  <script>
+    const dropzone = document.getElementById('dropzone');
+    const input = document.getElementById('imgInp');
+    const preview = document.getElementById('preview');
+
+    dropzone.addEventListener('click', () => input.click());
+    dropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropzone.classList.add('dragover');
+    });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith("image/")) {
+        input.files = e.dataTransfer.files;
+        preview.src = URL.createObjectURL(file);
+        preview.classList.remove('hidden');
+      }
+    });
+
+    input.onchange = evt => {
+      const [file] = input.files;
+      if (file && file.type.startsWith("image/")) {
+        preview.src = URL.createObjectURL(file);
+        preview.classList.remove('hidden');
+      }
+    };
+  </script>
+
+</body>
+</html>
