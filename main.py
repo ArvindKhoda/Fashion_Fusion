@@ -46,7 +46,7 @@ def login():
 @app.route('/home')
 def home():
     if 'user_id' in session:
-        return render_template('home.html', im=url_for('static', filename="home_image.png"))
+        return render_template('home.html')
     else:
         return redirect(url_for('login'))
 
