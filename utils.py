@@ -20,7 +20,7 @@ import os
 
 
 # Pinecone setup
-from pinecone import Pinecone
+import pinecone
 pc = Pinecone(api_key="pcsk_5hckh7_4LCqvYcZuiZNK4SzStDrieiDBJ1gmb7LRkJqYnGd8AQCUiNz5AYY421GffPVWRG")
 index = pc.Index("fashion-recommendation")
 
