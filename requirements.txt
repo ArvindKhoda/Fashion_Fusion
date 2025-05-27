@@ -11,5 +11,5 @@ pandas==2.0.3
 Pillow==10.0.0
 tqdm==4.65.0
 tensorflow==2.13.0
-pinecone-client==2.2.2
+pinecone-client==3.0.2
 waitress
