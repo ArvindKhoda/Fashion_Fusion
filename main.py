@@ -18,7 +18,7 @@ from flask import (
 )
 from bson import ObjectId, Binary
 from bson.errors import InvalidId
-from pinecone import Pinecone, ServerlessSpec
+import pinecone
 
 # ============================
 # LOCAL IMPORTS
