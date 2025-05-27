@@ -3,7 +3,6 @@ pillow==10.0.0
 pymongo==4.3.3
 dnspython==2.3.0
 tqdm==4.65.0
-pinecone-client==2.2.2
 waitress==2.1.2
 keras==2.13.1
 keras-preprocessing==1.1.2
