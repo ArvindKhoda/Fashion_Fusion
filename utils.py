@@ -23,8 +23,7 @@ import os
 import pinecone
 # Initialize Pinecone with your API key
 pc=pinecone.init(api_key="pcsk_5hckh7_4LCqvYcZuiZNK4SzStDrieiDBJ1gmb7LRkJqYnGd8AQCUiNz5AYY421GffPVWRG")
-# Create or connect to your index
-index = pinecone.Index("fashion-recommendation")
+
 
 
 # Importing ResNet50
@@ -66,6 +65,8 @@ def recommender(features):
     """
     Query Pinecone index with the given features and return a DataFrame with results.
     """
+    # Create or connect to your index
+    index = pinecone.Index("fashion-recommendation")
     response = index.query(
         namespace="ns1",
         vector=features.tolist(),
@@ -93,8 +94,7 @@ def prs_recommender(features, namespace):
     Query Pinecone index with the given features within a specific namespace.
     Returns a DataFrame with the top 5 matches.
     """
-    index = pc.Index("virtualwardrobe")
-
+    index = pinecone.Index("virtualwardrobe")
     response = index.query(
         vector=features.tolist(),
         top_k=5,
