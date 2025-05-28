@@ -43,6 +43,11 @@ app.secret_key = "jigysa"
 def login():
     return render_template('login.html')
 
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 @app.route('/home')
 def home():
     if 'user_id' in session:
