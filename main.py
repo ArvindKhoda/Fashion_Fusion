@@ -45,7 +45,7 @@ def login():
 
 
 @app.route('/login')
-def login():
+def Login():
     return render_template('login.html')
 
 @app.route('/home')
